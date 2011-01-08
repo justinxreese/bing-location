@@ -1,3 +1,5 @@
+require '../lib/location'
+
 my_loc = BingLocator.new()
 my_loc.api_key = YAML.load_file('../config/api.yml')['production']['key']
 
