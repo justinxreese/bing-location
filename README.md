@@ -8,7 +8,7 @@ The file listed in .gitignore will need to be recreated with the following synta
     development:
      key: YOUR API KEY 
 ## Install
-   gem install bing-location --pre
+    gem install bing-location --pre
 ## Example
     require 'location'
     
