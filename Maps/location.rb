@@ -3,7 +3,28 @@ require 'tempfile'
 require 'fileutils'
 require 'yaml'
 
-# {API Documentation}[http://msdn.microsoft.com/en-us/library/ff701724.aspx]
+# This class is a wrapper for the Bing Maps API ({API Documentation}[http://msdn.microsoft.com/en-us/library/ff701724.aspx])
+# that makes it easy to get more information about a location or create maps.
+# 
+# Currently the class is built for dealing with one object (point on a map/location).
+# 
+# =Example Usage
+#   my_loc = BingLocator.new()
+#   my_loc.api_key = "YOU-BING-MAPS-API-KEY"
+#   my_loc.country_region = 'US'
+#   my_loc.admin_district = 'PA'
+#   my_loc.locality = 'Pittsburgh'
+#   my_loc.address_line = '430 Atwood St'
+#   my_loc.obj_type = 'json'
+#   my_loc.get_obj_by_address
+#   puts my_loc.object
+#
+#
+#   my_loc = BingLocator.new()
+#   my_loc.api_key = "YOU-BING-MAPS-API-KEY"
+#   my_loc.query = 'University of Pittsburgh'
+#   puts my_loc.get_img_url_by_query(800,600)
+#
 class BingLocator
   attr_accessor	:country_region, :admin_district, :postal_code, :locality, 
 		:address_line, :api_key, :obj_type, :query, :map_type, :show_traffic, 
@@ -163,10 +184,14 @@ class BingLocator
     end
   end
 
+  def parse_obj
+  # TODO - WRITE THIS
+  end
+
 end
 
 my_loc = BingLocator.new()
-my_loc.api_key = YAML.load_file('../config/api_key.yml')['production']['key']
+my_loc.api_key = YAML.load_file('../config/api.yml')['production']['key']
 
 # my_loc.country_region = 'US'
 # my_loc.admin_district = 'PA'
@@ -176,9 +201,10 @@ my_loc.api_key = YAML.load_file('../config/api_key.yml')['production']['key']
 # my_loc.get_obj_by_address
 # puts my_loc.object
 
-my_loc.query = '48 Shady Dr W Pittsburgh PA 15228'
+# my_loc.query = '48 Shady Dr W Pittsburgh PA 15228'
 # my_loc.query = 'south side'
-my_loc.latitude = 40.383545
-my_loc.longitude = -80.046509
+my_loc.query = 'eifel tower'
+# my_loc.latitude = 40.383545
+# my_loc.longitude = -80.046509
 
 puts my_loc.get_img_url_by_query(800,600)
