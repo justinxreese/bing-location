@@ -9,6 +9,11 @@ The file listed in .gitignore will need to be recreated with the following synta
      key: YOUR API KEY 
 ## Install
     gem install bing-location --pre
+## Dependencies
+- net/http
+- tempfile
+- fileutils
+- yaml
 ## Example
     require 'location'
     

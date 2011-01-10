@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: BingLocator</title>
+
+	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="./lib/location_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/location.rb">lib/location.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-i-get_img_by_point">#get_img_by_point</a></li>
+					
+					<li><a href="#method-i-get_img_by_query">#get_img_by_query</a></li>
+					
+					<li><a href="#method-i-get_img_url_by_point">#get_img_url_by_point</a></li>
+					
+					<li><a href="#method-i-get_img_url_by_query">#get_img_url_by_query</a></li>
+					
+					<li><a href="#method-i-get_obj_by_address">#get_obj_by_address</a></li>
+					
+					<li><a href="#method-i-get_obj_by_point">#get_obj_by_point</a></li>
+					
+					<li><a href="#method-i-get_obj_by_query">#get_obj_by_query</a></li>
+					
+					<li><a href="#method-i-parse_obj">#parse_obj</a></li>
+					
+					<li><a href="#method-i-set_defaults">#set_defaults</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./BingLocator.html">BingLocator</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">BingLocator</h1>
+
+		<div id="description">
+			<p>
+This class is a wrapper for the Bing Maps API (<a
+href="http://msdn.microsoft.com/en-us/library/ff701724.aspx">API
+Documentation</a>) that makes it easy to get more information about a
+location or create maps.
+</p>
+<p>
+Currently the class is built for dealing with one object (point on a
+map/location).
+</p>
+<h1>Example Usage</h1>
+<pre>
+  my_loc = BingLocator.new()
+  my_loc.api_key = &quot;YOU-BING-MAPS-API-KEY&quot;
+  my_loc.country_region = 'US'
+  my_loc.admin_district = 'PA'
+  my_loc.locality = 'Pittsburgh'
+  my_loc.address_line = '430 Atwood St'
+  my_loc.obj_type = 'json'
+  my_loc.get_obj_by_address
+  puts my_loc.object
+
+  my_loc = BingLocator.new()
+  my_loc.api_key = &quot;YOU-BING-MAPS-API-KEY&quot;
+  my_loc.query = 'University of Pittsburgh'
+  puts my_loc.get_img_url_by_query(800,600)</pre>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="country-region-attribute-method" class="method-detail">
+				<a name="country_region"></a>
+				
+				<a name="country_region="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">country_region</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="admin-district-attribute-method" class="method-detail">
+				<a name="admin_district"></a>
+				
+				<a name="admin_district="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">admin_district</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="postal-code-attribute-method" class="method-detail">
+				<a name="postal_code"></a>
+				
+				<a name="postal_code="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">postal_code</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="locality-attribute-method" class="method-detail">
+				<a name="locality"></a>
+				
+				<a name="locality="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">locality</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="address-line-attribute-method" class="method-detail">
+				<a name="address_line"></a>
+				
+				<a name="address_line="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">address_line</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="api-key-attribute-method" class="method-detail">
+				<a name="api_key"></a>
+				
+				<a name="api_key="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">api_key</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="obj-type-attribute-method" class="method-detail">
+				<a name="obj_type"></a>
+				
+				<a name="obj_type="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">obj_type</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="query-attribute-method" class="method-detail">
+				<a name="query"></a>
+				
+				<a name="query="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">query</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="map-type-attribute-method" class="method-detail">
+				<a name="map_type"></a>
+				
+				<a name="map_type="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">map_type</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="show-traffic-attribute-method" class="method-detail">
+				<a name="show_traffic"></a>
+				
+				<a name="show_traffic="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">show_traffic</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="zoom-level-attribute-method" class="method-detail">
+				<a name="zoom_level"></a>
+				
+				<a name="zoom_level="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">zoom_level</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="name-attribute-method" class="method-detail">
+				<a name="name"></a>
+				
+				<a name="name="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">name</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="point-attribute-method" class="method-detail">
+				<a name="point"></a>
+				
+				<a name="point="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">point</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="latitude-attribute-method" class="method-detail">
+				<a name="latitude"></a>
+				
+				<a name="latitude="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">latitude</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="longitude-attribute-method" class="method-detail">
+				<a name="longitude"></a>
+				
+				<a name="longitude="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">longitude</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="admin-district--attribute-method" class="method-detail">
+				<a name="admin_district_2"></a>
+				
+				<a name="admin_district_2="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">admin_district_2</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="formatted-address-attribute-method" class="method-detail">
+				<a name="formatted_address"></a>
+				
+				<a name="formatted_address="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">formatted_address</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="confidence-attribute-method" class="method-detail">
+				<a name="confidence"></a>
+				
+				<a name="confidence="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">confidence</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="object-attribute-method" class="method-detail">
+				<a name="object"></a>
+				
+				<a name="object="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">object</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="image-attribute-method" class="method-detail">
+				<a name="image"></a>
+				
+				<a name="image="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">image</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="get-img-by-point-method" class="method-detail ">
+				<a name="method-i-get_img_by_point"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_img_by_point</span><span
+						class="method-args">(width,height)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Uses the object&#8217;s latitude and longitude to get an image file from
+the Bing API.
+</p>
+<p>
+The file will be returned as a File object. To save the file use something
+like the following: 
+</p>
+<pre>
+  File.rename(my_loc.get_img_by_point(800,600).path,'map.jpeg')</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="get-img-by-point-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/location.rb, line 169</span>
+169:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_img_by_point</span>(<span class="ruby-identifier">width</span>,<span class="ruby-identifier">height</span>)
+170:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set_defaults</span>
+171:     <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'No latitude or longitude set for location'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">latitude</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">longitude</span>
+172:     <span class="ruby-comment cmt"># Build request URL</span>
+173:     <span class="ruby-identifier">params</span> = <span class="ruby-node">&quot;#{self.map_type}/#{self.latitude},#{self.longitude}/#{self.zoom_level}&quot;</span>
+174:     <span class="ruby-identifier">params</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;?mapSize=#{width},#{height}&amp;pushpin=#{self.latitude},#{self.longitude}&quot;</span>
+175:     <span class="ruby-identifier">params</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;&amp;mapLayer=TrafficFlow&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">show_traffic</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TRUE</span> 
+176:     <span class="ruby-identifier">request_url</span> = <span class="ruby-identifier">$img_base_url</span><span class="ruby-operator">+</span><span class="ruby-identifier">params</span><span class="ruby-operator">+</span><span class="ruby-node">&quot;&amp;key=#{self.api_key}&quot;</span>
+177:     <span class="ruby-comment cmt"># REST request !</span>
+178:     <span class="ruby-keyword kw">begin</span>
+179:       <span class="ruby-identifier">tmp</span> = <span class="ruby-constant">Tempfile</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'map_image.jpeg'</span>)
+180:       <span class="ruby-identifier">tmp</span>.<span class="ruby-identifier">write</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get_response</span>(<span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">request_url</span>)).<span class="ruby-identifier">body</span> 
+181:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">tmp</span>.<span class="ruby-identifier">flush</span>
+182:     <span class="ruby-keyword kw">rescue</span>
+183:       <span class="ruby-keyword kw">return</span> <span class="ruby-constant">FALSE</span>
+184:     <span class="ruby-keyword kw">end</span>
+185:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-img-by-query-method" class="method-detail ">
+				<a name="method-i-get_img_by_query"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_img_by_query</span><span
+						class="method-args">(width,height)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Uses the object&#8217;s query to get an image file from the Bing API.
+</p>
+<p>
+The file will be returned as a File object. To save the file use something
+like the following: 
+</p>
+<pre>
+  File.rename(my_loc.get_img_by_query(800,600).path,'map.jpeg')</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="get-img-by-query-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/location.rb, line 122</span>
+122:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_img_by_query</span>(<span class="ruby-identifier">width</span>,<span class="ruby-identifier">height</span>)
+123:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set_defaults</span>
+124:     <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'No query set for location'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">query</span>
+125:     <span class="ruby-identifier">query</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">query</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">' '</span>,<span class="ruby-value str">'%20'</span>)
+126:     <span class="ruby-comment cmt"># Build request URL</span>
+127:     <span class="ruby-identifier">params</span> = <span class="ruby-node">&quot;#{self.map_type}/#{query}?mapSize=#{width},#{height}&quot;</span>
+128:     <span class="ruby-identifier">params</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;&amp;mapLayer=TrafficFlow&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">show_traffic</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TRUE</span> 
+129:     <span class="ruby-identifier">request_url</span> = <span class="ruby-identifier">$img_base_url</span><span class="ruby-operator">+</span><span class="ruby-identifier">params</span><span class="ruby-operator">+</span><span class="ruby-node">&quot;&amp;key=#{self.api_key}&quot;</span>
+130:     <span class="ruby-comment cmt"># REST request !</span>
+131:     <span class="ruby-keyword kw">begin</span>
+132:       <span class="ruby-identifier">tmp</span> = <span class="ruby-constant">Tempfile</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'map_image.jpeg'</span>)
+133:       <span class="ruby-identifier">tmp</span>.<span class="ruby-identifier">write</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get_response</span>(<span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">request_url</span>)).<span class="ruby-identifier">body</span> 
+134:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">tmp</span>.<span class="ruby-identifier">flush</span>
+135:     <span class="ruby-keyword kw">rescue</span>
+136:       <span class="ruby-keyword kw">return</span> <span class="ruby-constant">FALSE</span>
+137:     <span class="ruby-keyword kw">end</span>
+138:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-img-url-by-point-method" class="method-detail ">
+				<a name="method-i-get_img_url_by_point"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_img_url_by_point</span><span
+						class="method-args">(width,height)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Uses the object&#8217;s latitude and longitude to get an image url from the
+Bing API.  Using the Bing URL is discouraged.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-img-url-by-point-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/location.rb, line 154</span>
+154:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_img_url_by_point</span>(<span class="ruby-identifier">width</span>,<span class="ruby-identifier">height</span>)
+155:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set_defaults</span>
+156:     <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'No latitude or longitude set for location'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">latitude</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">longitude</span>
+157:     <span class="ruby-comment cmt"># Build request URL</span>
+158:     <span class="ruby-identifier">params</span> = <span class="ruby-node">&quot;#{self.map_type}/#{self.latitude},#{self.longitude}/#{self.zoom_level}&quot;</span>
+159:     <span class="ruby-identifier">params</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;?mapSize=#{width},#{height}&amp;pushpin=#{self.latitude},#{self.longitude}&quot;</span>
+160:     <span class="ruby-identifier">params</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;&amp;mapLayer=TrafficFlow&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">show_traffic</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TRUE</span> 
+161:     <span class="ruby-identifier">request_url</span> = <span class="ruby-identifier">$img_base_url</span><span class="ruby-operator">+</span><span class="ruby-identifier">params</span><span class="ruby-operator">+</span><span class="ruby-node">&quot;&amp;key=#{self.api_key}&quot;</span>
+162:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">request_url</span>
+163:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-img-url-by-query-method" class="method-detail ">
+				<a name="method-i-get_img_url_by_query"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_img_url_by_query</span><span
+						class="method-args">(width,height)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Uses the object&#8217;s query to get an image url from the Bing API. Using
+the Bing URL is discouraged.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-img-url-by-query-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/location.rb, line 141</span>
+141:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_img_url_by_query</span>(<span class="ruby-identifier">width</span>,<span class="ruby-identifier">height</span>)
+142:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set_defaults</span>
+143:     <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'No query set for location'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">query</span>
+144:     <span class="ruby-identifier">query</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">query</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">' '</span>,<span class="ruby-value str">'%20'</span>)
+145:     <span class="ruby-comment cmt"># Build request URL</span>
+146:     <span class="ruby-identifier">params</span> = <span class="ruby-node">&quot;#{self.map_type}/#{query}?mapSize=#{width},#{height}&quot;</span>
+147:     <span class="ruby-identifier">params</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;&amp;mapLayer=TrafficFlow&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">show_traffic</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TRUE</span> 
+148:     <span class="ruby-identifier">request_url</span> = <span class="ruby-identifier">$img_base_url</span><span class="ruby-operator">+</span><span class="ruby-identifier">params</span><span class="ruby-operator">+</span><span class="ruby-node">&quot;&amp;key=#{self.api_key}&quot;</span>
+149:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">request_url</span>
+150:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-obj-by-address-method" class="method-detail ">
+				<a name="method-i-get_obj_by_address"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_obj_by_address</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Uses the object&#8217;s address to get a Location object from the Bing API.
+The object contains a normalized address, extra information, and latitude,
+longitude information
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-obj-by-address-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/location.rb, line 62</span>
+62:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_obj_by_address</span>
+63:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set_defaults</span>
+64:     <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'No address set for location'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">country_region</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">admin_district</span> <span class="ruby-operator">&amp;&amp;</span>
+65:                                             <span class="ruby-operator">!</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">postal_code</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">locality</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">address_line</span>
+66:     <span class="ruby-comment cmt"># Reformat strings</span>
+67:     <span class="ruby-identifier">address_line</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">address_line</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">' '</span>,<span class="ruby-value str">'%20'</span>)
+68:     <span class="ruby-identifier">locality</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">locality</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">' '</span>,<span class="ruby-value str">'%20'</span>)
+69:     <span class="ruby-comment cmt"># Build request URL</span>
+70:     <span class="ruby-identifier">params</span> = <span class="ruby-node">&quot;#{self.country_region}/#{self.admin_district}/#{self.postal_code}/&quot;</span>
+71:     <span class="ruby-identifier">params</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;#{locality}/#{address_line}?o=#{self.obj_type}&quot;</span>
+72:     <span class="ruby-identifier">request_url</span> = <span class="ruby-identifier">$obj_base_url</span><span class="ruby-operator">+</span><span class="ruby-identifier">params</span><span class="ruby-operator">+</span><span class="ruby-node">&quot;&amp;key=#{self.api_key}&quot;</span>
+73:     <span class="ruby-comment cmt"># REST request !</span>
+74:     <span class="ruby-keyword kw">begin</span>
+75:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">object</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get_response</span>(<span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">request_url</span>)).<span class="ruby-identifier">body</span> 
+76:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">object</span>
+77:     <span class="ruby-keyword kw">rescue</span>
+78:       <span class="ruby-keyword kw">return</span> <span class="ruby-constant">FALSE</span>
+79:     <span class="ruby-keyword kw">end</span>
+80:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-obj-by-point-method" class="method-detail ">
+				<a name="method-i-get_obj_by_point"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_obj_by_point</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Uses the object&#8217;s latitude and longitude to get a Location object
+from the Bing API.  The object contains a normalized address, extra
+information, and latitude, longitude information
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-obj-by-point-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/location.rb, line 84</span>
+84:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_obj_by_point</span>
+85:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set_defaults</span>
+86:     <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'No latitude or longitude set for location'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">latitude</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">longitude</span>
+87:     <span class="ruby-comment cmt"># Build request URL</span>
+88:     <span class="ruby-identifier">params</span> = <span class="ruby-operator">+</span><span class="ruby-node">&quot;#{self.latitude},#{self.longitude}?o=#{self.obj_type}&quot;</span>
+89:     <span class="ruby-identifier">request_url</span> = <span class="ruby-identifier">$obj_base_url</span><span class="ruby-operator">+</span><span class="ruby-identifier">params</span><span class="ruby-operator">+</span><span class="ruby-node">&quot;&amp;key=#{self.api_key}&quot;</span>
+90:     <span class="ruby-comment cmt"># REST request !</span>
+91:     <span class="ruby-keyword kw">begin</span>
+92:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">object</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get_response</span>(<span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">request_url</span>)).<span class="ruby-identifier">body</span> 
+93:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">object</span>
+94:     <span class="ruby-keyword kw">rescue</span>
+95:       <span class="ruby-keyword kw">return</span> <span class="ruby-constant">FALSE</span>
+96:     <span class="ruby-keyword kw">end</span>
+97:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-obj-by-query-method" class="method-detail ">
+				<a name="method-i-get_obj_by_query"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_obj_by_query</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Uses the object&#8217;s query to get a Location object from the Bing API. 
+The object contains a normalized address, extra information, and latitude,
+longitude information
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-obj-by-query-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/location.rb, line 102</span>
+102:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_obj_by_query</span>
+103:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set_defaults</span>
+104:     <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'No query set for location'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">query</span>
+105:     <span class="ruby-identifier">query</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">query</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">' '</span>,<span class="ruby-value str">'%20'</span>)
+106:     <span class="ruby-comment cmt"># Build request URL</span>
+107:     <span class="ruby-identifier">params</span> = <span class="ruby-node">&quot;#{query}?o=#{self.obj_type}&quot;</span>
+108:     <span class="ruby-identifier">request_url</span> = <span class="ruby-identifier">$obj_base_url</span><span class="ruby-operator">+</span><span class="ruby-identifier">params</span><span class="ruby-operator">+</span><span class="ruby-node">&quot;&amp;key=#{self.api_key}&quot;</span>
+109:     <span class="ruby-comment cmt"># REST request !</span>
+110:     <span class="ruby-keyword kw">begin</span>
+111:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">object</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get_response</span>(<span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">request_url</span>)).<span class="ruby-identifier">body</span> 
+112:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">object</span>
+113:     <span class="ruby-keyword kw">rescue</span>
+114:       <span class="ruby-keyword kw">return</span> <span class="ruby-constant">FALSE</span>
+115:     <span class="ruby-keyword kw">end</span>
+116:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="parse-obj-method" class="method-detail ">
+				<a name="method-i-parse_obj"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">parse_obj</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="parse-obj-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/location.rb, line 187</span>
+187:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_obj</span>
+188:   <span class="ruby-comment cmt"># TODO - WRITE THIS</span>
+189:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="set-defaults-method" class="method-detail ">
+				<a name="method-i-set_defaults"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">set_defaults</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Makes assumptions for required fields that are not yet defined. Assumptions
+can be overridden by assigning values
+</p>
+<dl>
+<dt><a href="BingLocator.html#country_region">country_region</a></dt><dd><p>
+Country or region, i.e. &#8216;US&#8217;
+</p>
+</dd>
+<dt><a href="BingLocator.html#admin_district">admin_district</a></dt><dd><p>
+Administrative District. In the US this is State i.e. &#8216;PA&#8217;
+</p>
+</dd>
+<dt><a href="BingLocator.html#postal_code">postal_code</a></dt><dd><p>
+Postal code or zip code. i.e. &#8216;15213&#8217;
+</p>
+</dd>
+<dt>locality</dt><dd><p>
+Locality The locality, such as the city or neighborhood, that corresponds
+to an address i.e. &#8216;Pittsburgh&#8217;
+</p>
+</dd>
+<dt><a href="BingLocator.html#address_line">address_line</a></dt><dd><p>
+The official street line of an address relative to the area i.e. &#8216;430
+Atwood St&#8217;
+</p>
+</dd>
+<dt><a href="BingLocator.html#obj_type">obj_type</a></dt><dd><p>
+Type of object returned by REST request
+</p>
+</dd>
+<dt><a href="BingLocator.html#map_type">map_type</a></dt><dd><p>
+Imagery to use for maps
+</p>
+</dd>
+<dt><a href="BingLocator.html#zoom_level">zoom_level</a></dt><dd><p>
+Zoom level of a map
+</p>
+</dd>
+</dl>
+					
+
+					
+					<div class="method-source-code"
+						id="set-defaults-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/location.rb, line 46</span>
+46:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_defaults</span>
+47:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">country_region</span> = <span class="ruby-value str">'-'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">country_region</span>
+48:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">admin_district</span> = <span class="ruby-value str">'-'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">admin_district</span>
+49:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">postal_code</span>    = <span class="ruby-value str">'-'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">postal_code</span>
+50:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">locality</span>       = <span class="ruby-value str">'-'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">locality</span>
+51:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">address_line</span>   = <span class="ruby-value str">'-'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">address_line</span>
+52:     <span class="ruby-comment cmt"># Allowed values - json, xml</span>
+53:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">obj_type</span> = <span class="ruby-value str">'json'</span>    <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">obj_type</span>
+54:     <span class="ruby-comment cmt"># Allowed values - Aerial, AerialWithLabels, Road</span>
+55:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">map_type</span> = <span class="ruby-value str">'Road'</span>    <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">map_type</span>
+56:     <span class="ruby-comment cmt"># Allowed values - An integer between 1 and 22 </span>
+57:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">zoom_level</span> = <span class="ruby-value str">'11'</span>    <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">zoom_level</span>
+58:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
