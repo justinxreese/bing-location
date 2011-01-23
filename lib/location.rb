@@ -1,7 +1,6 @@
 require 'net/http'
 require 'tempfile'
 require 'fileutils'
-require 'yaml'
 
 # This class is a wrapper for the Bing Maps API ({API Documentation}[http://msdn.microsoft.com/en-us/library/ff701724.aspx])
 # that makes it easy to get more information about a location or create maps.

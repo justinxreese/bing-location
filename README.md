@@ -13,7 +13,6 @@ In order to run the tests in /test, the following file will need to be created a
 - net/http
 - tempfile
 - fileutils
-- yaml
 
 ## Example
     require 'location'
